@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/luctst/lucas-tostee/issues"
   },
-  "homepage": "https://www.lucas-tostee.com"
+  "homepage": "https://www.lucas-tostee.com",
+  "dependencies": {
+    "webpack": "^4.17.1"
+  }
 }
