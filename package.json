@@ -1,0 +1,20 @@
+{
+  "name": "lucas-tostee",
+  "version": "1.0.0",
+  "description": "Personal website",
+  "main": "webpack.config.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/luctst/lucas-tostee.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/luctst/lucas-tostee/issues"
+  },
+  "homepage": "https://www.lucas-tostee.com"
+}
