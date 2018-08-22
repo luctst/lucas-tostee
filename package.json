@@ -6,6 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "watch": "webpack --watch",
+    "start": "webpack-dev-server --open",
     "build": "webpack"
   },
   "repository": {
@@ -29,6 +30,7 @@
     "node-sass": "^4.9.3",
     "sass-loader": "^7.1.0",
     "style-loader": "^0.22.1",
-    "webpack": "^4.17.1"
+    "webpack": "^4.17.1",
+    "webpack-dev-server": "^3.1.5"
   }
 }
