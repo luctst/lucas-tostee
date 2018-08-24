@@ -1,2 +1,30 @@
 @import "../../helper/modifier.scss";
 @import "../../helper/variable.scss";
+
+@media screen and (max-width: 570px) {
+    .name {
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        height: 100vh;
+        justify-content: center;
+        position: fixed;
+        width: 100vw;
+
+        &--logo {
+            a {
+                padding: 0 10px;
+            }
+            a:hover {
+                color: $iconesHover;
+                transition: linear .3s;
+            }
+        }
+    }
+    .description {
+        background: #fff;
+        padding: 8%;
+        position: absolute;
+        top: 100%;
+    }
+}
