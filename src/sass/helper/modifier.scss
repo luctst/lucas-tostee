@@ -1,0 +1,29 @@
+@import "./variable.scss";
+
+/*******************************************
+Icones
+*******************************************/
+.is__icone {
+    color: $icones;
+    text-decoration: none;
+}
+
+
+/*******************************************
+Text
+*******************************************/
+.is__text__description {
+    color: $icones;
+    font-family: 'Open-Sans',sans-serif;
+    font-size: $textDescriptionSize;
+    font-weight: lighter;
+}
+
+/*******************************************
+Title
+*******************************************/
+.is__main__title {
+    color: $primaryTitleColor;
+    font-family: "Raleway", sans-serif;
+    font-size: $primarySizeTitle;
+}
