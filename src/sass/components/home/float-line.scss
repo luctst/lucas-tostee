@@ -1,8 +1,7 @@
 @import "../../helper/modifier.scss";
 @import "../../helper/variable.scss";
 
-@media screen and (max-width: 570px) {
-    .name {
+.name {
         align-items: center;
         display: flex;
         flex-direction: column;
@@ -27,4 +26,3 @@
         position: absolute;
         top: 100%;
     }
-}
