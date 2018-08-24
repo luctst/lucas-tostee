@@ -1,5 +1,6 @@
 const CleanWebpack = require("clean-webpack-plugin");
 const WebpackHtml = require("html-webpack-plugin");
+const ExtractCss = require("mini-css-extract-plugin");
 
 module.exports = {
     mode: "production",
@@ -14,13 +15,16 @@ module.exports = {
         new WebpackHtml( {
             template: "./src/index.html"
         } ),
-        new CleanWebpack( ['dist'] ),
+        new CleanWebpack(['dist']),
+        new ExtractCss( {
+            filename: "main.css"
+        } ),
     ],
     module: {
         rules: [
             {
-                test: /\main.scss/,
-                use: ["style-loader", "css-loader", "sass-loader"]
+                test: /\main.scss$/,
+                use: [ExtractCss.loader, "css-loader", "sass-loader"]
             }
         ],
     }
