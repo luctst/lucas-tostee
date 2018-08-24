@@ -12,18 +12,26 @@ Icones
 /*******************************************
 Text
 *******************************************/
+@media screen and (max-width: 570px) { 
+    .is__text__description {
+        font-size: $textDescriptionSizeMobile;
+    }
+}
 .is__text__description {
     color: $icones;
     font-family: 'Open-Sans',sans-serif;
-    font-size: $textDescriptionSize;
     font-weight: lighter;
 }
 
 /*******************************************
 Title
 *******************************************/
+@media screen and (max-width: 570px) {
+    .is__main__title {
+        font-size: $primarySizeTitleMobile;
+    }
+}
 .is__main__title {
     color: $primaryTitleColor;
     font-family: "Raleway", sans-serif;
-    font-size: $primarySizeTitle;
 }
