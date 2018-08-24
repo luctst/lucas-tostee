@@ -12,26 +12,42 @@ Icones
 /*******************************************
 Text
 *******************************************/
-@media screen and (max-width: 570px) { 
-    .is__text__description {
-        font-size: $textDescriptionSizeMobile;
-    }
-}
 .is__text__description {
     color: $icones;
     font-family: 'Open-Sans',sans-serif;
     font-weight: lighter;
 }
+/*******************************************
+Media queries text
+*******************************************/
+@media screen and (max-width: 570px) { 
+    .is__text__description {
+        font-size: $textDescriptionSizeMobile;
+    }
+}
+@media screen and (min-width: 571px) and (max-width: 650px) {
+    .is__text__description {
+        font-size: $textDescriptionSizeMax650;
+    }
+}
 
 /*******************************************
 Title
+*******************************************/
+.is__main__title {
+    color: $primaryTitleColor;
+    font-family: "Raleway", sans-serif;
+}
+/*******************************************
+Media queries title
 *******************************************/
 @media screen and (max-width: 570px) {
     .is__main__title {
         font-size: $primarySizeTitleMobile;
     }
 }
-.is__main__title {
-    color: $primaryTitleColor;
-    font-family: "Raleway", sans-serif;
+@media screen and (min-width: 571px) and (max-width: 650px) {
+    .is__main__title {
+        font-size: $primarySizeTitleMax650;
+    }
 }
