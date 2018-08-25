@@ -30,6 +30,29 @@ Media queries text
         font-size: $textDescriptionSizeMax650;
     }
 }
+<<<<<<< HEAD
+=======
+@media screen and (min-width: 651px) and (max-width: 800px) {
+    .is__text__description {
+        font-size: $textDescriptionSizeMax800;
+    }
+}
+@media screen and (min-width: 801px) and (max-width: 1000px) {
+    .is__text__description {
+        font-size: $textDescriptionSizeMax1000;
+    }
+}
+@media screen and (min-width: 1001px) {
+    .is__text__description {
+        font-size: $textDescriptionSizeMin1001;
+    }
+}
+@media screen and (min-width: 1300px) {
+    .is__text__description {
+        font-size: $textDescriptionSizeMin1300;
+    }
+}
+>>>>>>> dev
 
 /*******************************************
 Title
@@ -50,4 +73,27 @@ Media queries title
     .is__main__title {
         font-size: $primarySizeTitleMax650;
     }
+<<<<<<< HEAD
+=======
+}
+@media screen and (min-width: 651px) and (max-width: 800px) {
+    .is__main__title {
+        font-size: $primarySizeTitleMax800;
+    }
+}
+@media screen and (min-width: 801px) and (max-width: 1000px) {
+    .is__main__title {
+        font-size: $primarySizeTitleMax1000;
+    }
+}
+@media screen and (min-width: 1001px) {
+    .is__main__title {
+        font-size: $primarySizeTitleMin1001;
+    }
+}
+@media screen and (min-width: 1300px) {
+    .is__main__title {
+        font-size: $primarySizeTitleMin1300;
+    }
+>>>>>>> dev
 }
