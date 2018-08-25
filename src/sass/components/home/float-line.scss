@@ -20,9 +20,20 @@
             }
         }
     }
-    .description {
-        background: #fff;
-        padding: 8%;
-        position: absolute;
-        top: 100%;
+.description {
+    background: #fff;
+    padding: 8%;
+    position: absolute;
+    top: 100%;
+}
+/*****************************
+Media queries
+****************************/
+@media screen and (min-width: 1001px) {
+    .name {
+        width: 50vw;
     }
+    .description {
+        left: 50%;
+    }
+}
