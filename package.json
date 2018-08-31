@@ -20,18 +20,10 @@
     "url": "https://github.com/luctst/lucas-tostee/issues"
   },
   "homepage": "https://www.lucas-tostee.com",
-  "dependencies": {
-    "webpack-cli": "^3.1.0"
-  },
+  "dependencies": {},
   "devDependencies": {
-    "clean-webpack-plugin": "^0.1.19",
-    "css-loader": "^1.0.0",
-    "html-webpack-plugin": "^3.2.0",
-    "mini-css-extract-plugin": "^0.4.2",
-    "node-sass": "^4.9.3",
-    "sass-loader": "^7.1.0",
-    "style-loader": "^0.22.1",
-    "webpack": "^4.17.1",
-    "webpack-dev-server": "^3.1.5"
+    "browser-sync": "^2.24.7",
+    "gulp": "^3.9.1",
+    "gulp-sass": "^4.0.1"
   }
 }
