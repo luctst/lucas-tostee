@@ -2,6 +2,22 @@ const Gulp = require("gulp");
 const BrowserSync = require("browser-sync").create();
 const Sass = require("gulp-sass");
 const Delete = require("del");
+const Css = require("gulp-clean-css");
+const PostCss = require("gulp-postcss");
+const Autoprefixer = require("autoprefixer");
+const DeleteDuplicateCss = require("postcss-discard-duplicates");
+const Run = require("run-sequence");
+const HtmlMinify = require("gulp-htmlmin");
+
+/*
+* TODO: Crée un fichier css en utilisant SASS sur le fichier ./src/sass/main.scss
+*/
+Gulp.task("createCss", () => {
+    return Gulp.src("./src/sass/main.scss")
+        .pipe(Sass() )
+        .pipe(Gulp.dest("src/") )
+        .pipe(BrowserSync.reload( { stream: true } ) );
+});
 
 /*
 * TODO: Exécute des instructions(second paramétre) à chaque fois que le fichier nommé dans watch est modifié.
@@ -14,19 +30,27 @@ Gulp.task("default", ["liveBrowser", "createCss"], () => {
 /*
 * TODO: Supprime le fichier dist/
 */
-Gulp.watch("del", () => {
-    return del.sync("dist/*");
+Gulp.task("deleteFolder", () => {
+    return Delete.sync("dist");
 } );
 
 /*
-* TODO: Crée un fichier css en utilisant SASS sur le fichier ./src/sass/main.scss
+* TODO:  Utilise Autoprefixer et postcss-discard-duplicates pour formater le CSS
 */
-Gulp.task("createCss", () => {
-    return Gulp.src("./src/sass/main.scss")
-        .pipe(Sass() )
-        .pipe(Gulp.dest("src") )
-        .pipe(BrowserSync.reload( { stream: true } ) );
-} );
+Gulp.task("formateCss", () => {
+    return Gulp.src("./src/main.css")
+        .pipe(PostCss( [Autoprefixer, DeleteDuplicateCss] ) )
+        .pipe(Gulp.dest("dist/") );
+});
+
+/*
+* TODO: build and minify the index.html file
+*/
+Gulp.task("MinifyIndexFile", () => {
+    return Gulp.src("./src/index.html")
+        .pipe(HtmlMinify())
+        .pipe(Gulp.dest("dist/"));
+});
 
 /*
 * TODO: Lance un serveur qui rafraichit automatiquement les pages.
@@ -37,4 +61,20 @@ Gulp.task("liveBrowser", () => {
             baseDir: "src"
         }
     } );
-} );
+});
+
+/*
+* TODO: Minifie le fichier CSS et l'ajoute dans le fichier dist/
+*/
+Gulp.task("minifyCss", () => {
+    return Gulp.src("./src/main.css")
+        .pipe(Css())
+        .pipe(Gulp.dest("dist/"));
+});
+
+/*
+* TODO: Ensemble de tâches executés l'une à la suite de l'autre
+*/
+Gulp.task("build", callback => {
+    return Run("deleteFolder", "MinifyIndexFile", "formateCss", "minifyCss", callback);
+});
