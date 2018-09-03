@@ -21,9 +21,10 @@ Gulp.task("createCss", () => {
 
 /*
 * TODO: Exécute des instructions(second paramétre) à chaque fois que le fichier nommé dans watch est modifié.
+* @param [liste de tâches à exécuter avant que la tâche default soit lancée]
 */
 Gulp.task("default", ["liveBrowser", "createCss"], () => {
-    Gulp.watch("./src/index.html", BrowserSync.reload);
+    Gulp.watch("./src/**/*.html", BrowserSync.reload);
     Gulp.watch("./src/**/*.scss", ["createCss"] );
 });
 
@@ -46,7 +47,7 @@ Gulp.task("formateCss", () => {
 /*
 * TODO: build and minify the index.html file
 */
-Gulp.task("MinifyIndexFile", () => {
+Gulp.task("minifyIndexFile", () => {
     return Gulp.src("./src/index.html")
         .pipe(HtmlMinify())
         .pipe(Gulp.dest("dist/"));

@@ -1,0 +1,50 @@
+@import "../../helper/modifier.scss";
+@import "../../helper/variable.scss";
+
+.project--pro,
+.project--perso {
+    padding: 4rem 0;
+}
+.project--pro--title,
+.project--perso--title {
+    margin: 0 4% 0 1%;
+}
+.project--pro--projects,
+.project--perso--projects {
+   display: flex;
+   flex-wrap: wrap;
+}
+.project--pro--projects--item,
+.project--perso--projects--item {
+    background: #fff;
+    border-radius: 6px;
+    margin: 1%;
+    padding: 1.25rem;
+}
+.project--pro--projects--item:hover,
+.project--perso--projects--item:hover {
+    box-shadow: 1px 7px 24px 10px rgba(0,0,0,0.04);
+    transition: .3s linear;
+}
+/*******************************************
+Media queries 
+*******************************************/
+@media screen and (max-width: 769px) {
+    .project--pro--projects--item,
+    .project--perso--projects--item {
+        width: 100%;
+        margin: 2%;
+    }
+}
+@media screen and (min-width: 769px) {
+    .project--pro--projects--item,
+    .project--perso--projects--item {
+        width: 42%;
+    }
+}
+@media screen and (min-width: 1088px) {
+    .project--pro--projects--item,
+    .project--perso--projects--item {
+        width: 27%;
+    }
+}
