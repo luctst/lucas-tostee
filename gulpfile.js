@@ -8,6 +8,7 @@ const Autoprefixer = require("autoprefixer");
 const DeleteDuplicateCss = require("postcss-discard-duplicates");
 const Run = require("run-sequence");
 const HtmlMinify = require("gulp-htmlmin");
+const Image = require("gulp-imagemin");
 
 /*
 * TODO: Crée un fichier css en utilisant SASS sur le fichier ./src/sass/main.scss
@@ -45,12 +46,39 @@ Gulp.task("formateCss", () => {
 });
 
 /*
+* TODO: Build and minifie les images perso/
+*/
+Gulp.task("minifyImgPerso", () => {
+    return Gulp.src("./src/img/projects/perso/*.png")
+        .pipe(Image())
+        .pipe(Gulp.dest("dist/img/projects/perso"));
+});
+
+/*
+* TODO: build and minifie les images pro/
+*/
+Gulp.task("minifyImgPro", () => {
+    return Gulp.src("./src/img/projects/pro/*.png")
+        .pipe(Image())
+        .pipe(Gulp.dest("dist/img/projects/pro"))
+});
+
+/*
 * TODO: build and minify the index.html file
 */
 Gulp.task("minifyIndexFile", () => {
     return Gulp.src("./src/index.html")
         .pipe(HtmlMinify())
         .pipe(Gulp.dest("dist/"));
+});
+
+/*
+* TODO: Build and minifie les fichiers HTML présents dans le dossier pages/
+*/
+Gulp.task("minifyOtherHtmlFile", () => {
+    return Gulp.src("./src/pages/*.html")
+        .pipe(HtmlMinify())
+        .pipe(Gulp.dest("dist/pages/"));
 });
 
 /*
@@ -77,5 +105,5 @@ Gulp.task("minifyCss", () => {
 * TODO: Ensemble de tâches executés l'une à la suite de l'autre
 */
 Gulp.task("build", callback => {
-    return Run("deleteFolder", "MinifyIndexFile", "formateCss", "minifyCss", callback);
+    return Run("deleteFolder", "minifyIndexFile", "minifyOtherHtmlFile", "minifyImgPerso", "minifyImgPro","formateCss", "minifyCss", callback);
 });

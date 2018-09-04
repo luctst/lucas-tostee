@@ -28,6 +28,7 @@
     "gulp": "^3.9.1",
     "gulp-clean-css": "^3.10.0",
     "gulp-htmlmin": "^4.0.0",
+    "gulp-imagemin": "^4.1.0",
     "gulp-postcss": "^8.0.0",
     "gulp-sass": "^4.0.1",
     "postcss-discard-duplicates": "^4.0.0",
