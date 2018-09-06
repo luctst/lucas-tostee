@@ -94,6 +94,7 @@ Media queries text
 Title
 *******************************************/
 .is__main__title, 
+.is__main__subTitle,
 .is__work__main__title, 
 .is__work__projects__title,
 .is__work__subTitle {
@@ -121,15 +122,24 @@ Media queries title
     .is__main__title {
         font-size: $primarySizeTitleMobile;
     }
+    .is__main__subTitle {
+        font-size: 1.6em;
+    }
 }
 @media screen and (min-width: 571px) and (max-width: 650px) {
     .is__main__title {
         font-size: $primarySizeTitleMax650;
     }
+    .is__main__subTitle {
+        font-size: 1.9em;
+    }
 }
 @media screen and (min-width: 651px) and (max-width: 800px) {
     .is__main__title {
         font-size: $primarySizeTitleMax800;
+    }
+    .is__main__subTitle {
+        font-size: 2.1em;
     }
     .is__work__main__title {
         font-size: 2.3em;
@@ -142,6 +152,9 @@ Media queries title
     .is__main__title {
         font-size: $primarySizeTitleMax1000;
     }
+    .is__main__subTitle {
+        font-size: 2.5em;
+    }
     .is__work__main__title {
         font-size: 2.3em;
     }
@@ -153,6 +166,9 @@ Media queries title
     .is__main__title {
         font-size: $primarySizeTitleMin1001;
     }
+    .is__main__subTitle {
+        font-size: 1.6em;
+    }
     .is__work__main__title {
         font-size: 2.5em;
     }
@@ -163,6 +179,9 @@ Media queries title
 @media screen and (min-width: 1300px) {
     .is__main__title {
         font-size: $primarySizeTitleMin1300;
+    }
+    .is__main__subTitle {
+        font-size: 2em;
     }
     .is__work__main__title {
         font-size: 2.7em; 
