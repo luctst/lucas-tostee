@@ -31,6 +31,7 @@
     "gulp-imagemin": "^4.1.0",
     "gulp-postcss": "^8.0.0",
     "gulp-sass": "^4.0.1",
+    "hint": "^3.4.3",
     "postcss-discard-duplicates": "^4.0.0",
     "run-sequence": "^2.2.1"
   }
