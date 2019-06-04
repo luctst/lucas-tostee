@@ -2,9 +2,9 @@ import React from 'react';
 import {Container} from "../styles/layout/Container";
 import Navigation from "../components/Navigation/Navigation";
 import {BrowserRouter, Route, Switch} from "react-router-dom";
-import About from "../components/About/About";
-import ProjectHandler from "./ProjectHandler/ProjectHandler";
-import NotFound from "../components/NotFound/NotFound";
+const About = React.lazy(() => import("../components/About/About"));
+const ProjectHandler = React.lazy(() => import("./ProjectHandler/ProjectHandler"));
+const Notfound = React.lazy(() => import("../components/NotFound/NotFound"));
 
 
 function App() {
@@ -12,11 +12,13 @@ function App() {
 		<Container as="section">
 			<BrowserRouter>
 				<Navigation/>
-				<Switch>
-						<Route exact strict sensitive path="/" component={About}/>
-						<Route exact strict sensitive path="/projects" component={ProjectHandler}/>
-						<Route component={NotFound}/>
-				</Switch>
+				<React.Suspense fallback={<div>Loading...</div>}>
+					<Switch>
+							<Route exact strict sensitive path="/" component={About}/>
+							<Route exact strict sensitive path="/projects" component={ProjectHandler}/>
+							<Route component={Notfound}/>
+					</Switch>
+				</React.Suspense>
 			</BrowserRouter>
 		</Container>
   );

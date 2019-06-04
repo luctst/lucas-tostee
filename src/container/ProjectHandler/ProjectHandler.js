@@ -1,9 +1,14 @@
 import React from "react";
+import MainProject from "./ProjectHandler.style";
 import HeaderRight from "../Header-right/HeaderRight";
 
 const ProjectHandler = () => {
 	return (
-		<HeaderRight/>
+		<>
+			<MainProject>
+				<HeaderRight/>
+			</MainProject>
+		</>
 	);
 };
 

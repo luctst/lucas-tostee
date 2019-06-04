@@ -4,11 +4,14 @@ import profilPicture from "../../assets/img/pp.jpeg";
 import NavigationStyle from "./Navigation.style";
 
 const Header = () => {
-	const [headerLinks, setHeaderLinks] = React.useState([
-		{content: "Projets", link: "/projects", id: 0},
-		{content: "Experiences", link: "/experiences", id: 1},
-		{content: "Contact", link: "/contact", id: 2}
-	]);
+	const [headerData] = React.useState({
+		headerLinks: [
+			{content: "Projets", link: "/projects"},
+			{content: "Experiences", link: "/experiences"},
+			{content: "Contact", link: "/contact"},
+			{location: "New-York"}
+		]
+	});
 
 	return (
 		<NavigationStyle.Head>
@@ -19,14 +22,16 @@ const Header = () => {
 			</div>
 			<NavigationStyle.Nav>
 				{
-					headerLinks.map(el => {
-						return <p>
-									<NavLink
-										to={el.link}
-										key={el.id}
-										activeStyle={{opacity: 1}}>{el.content}
-									</NavLink>
-								</p>
+					headerData.headerLinks.map((el, i) => {
+						return el.link ?
+							<p>
+								<NavLink
+									to={el.link}
+									key={i}
+									activeStyle={{opacity: 1}}>{el.content}
+								</NavLink>
+							</p>
+						: 	<NavigationStyle.NotLink key={i}>Location: {el.location}</NavigationStyle.NotLink>
 					})
 				}
 			</NavigationStyle.Nav>

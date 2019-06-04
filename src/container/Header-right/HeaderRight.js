@@ -12,7 +12,7 @@ const HeaderRight = () => {
 						Français
 					</a>
 				</div>
-				<div className="header--right--theme--switcher">
+				<div>
 					<div></div>
 					<span></span>
 					<input type="checkbox" />

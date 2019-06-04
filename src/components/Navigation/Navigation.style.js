@@ -4,12 +4,16 @@ import styleUtils from "../../styles/helper";
 const Head = styled.header`
 	display: flex;
 	flex-direction: column;
+	margin-top: ${styleUtils.marginTopHeader};
+	justify-content: space-between;
 
 	div {
-		max-width: 20%;
+		max-width: 2em;
 	}
 
 	img {
+		padding-top: 2.2px;
+		padding-left: 2px;
 		border-radius: 50%;
 		object-fit: cover;
 		width: 100%;
@@ -19,18 +23,17 @@ const Head = styled.header`
 const Nav = styled.nav`
 	display: flex;
 	flex-direction: column;
-	margin: auto 0;
+	margin-bottom: ${styleUtils.marginTopHeader};
 
 	p {
-		font-family: "Open Sans", sans-serif;
+		font-family: "Jacques Francois", sans-serif;
 		margin: 1vh 0;
 
 			a {
-			opacity: .7;
+			opacity: .6;
 			position: relative;
 			text-decoration: none;
-			font-weight: 800;
-			font-size: 16px;
+			font-size: 17px;
 			color: ${styleUtils.headerLinksColor};
 		}
 
@@ -51,7 +54,12 @@ const Nav = styled.nav`
 	}
 `;
 
+const NotLink = styled.p`
+	font-size: 12px;
+    color: ${styleUtils.headerLinksColor};
+`;
 export default {
 	Head,
 	Nav,
+	NotLink,
 };

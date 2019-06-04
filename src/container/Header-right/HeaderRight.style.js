@@ -1,28 +1,47 @@
 import styled from "styled-components";
+import styleUtils from "../../styles/helper";
 
 const HeaderRightStyle = styled.header`
 	max-height: 10vh;
+	margin-top: ${styleUtils.marginTopHeader};
 
 	nav {
 		display: flex;
 		justify-content: flex-end;
-	}
 
-	.header--right--theme--switcher {
-		touch-action: pan-x;
-		display: inline-block;
-		position: relative;
-		cursor: pointer;
-		background-color: transparent;
-		border: 0;
-		padding: 0;
-		-webkit-touch-callout: none;
-		-webkit-user-select: none;
-		-moz-user-select: none;
-		-ms-user-select: none;
-		user-select: none;
-		-webkit-tap-highlight-color: rgba(0,0,0,0);
-		-webkit-tap-highlight-color: transparent;
+		div:first-child {
+			margin-right: 20px;
+			
+			a {
+				display: flex;
+				align-items: center;
+				color: ${styleUtils.mainColor};
+				font-size: 16px;
+				font-family: 'Jacques Francois', sans-serif;
+
+				img {
+					width: 20px;
+					height: 20px;
+					margin-right: 10px;
+				}
+			}
+		}
+
+		div:last-child {
+			touch-action: pan-x;
+			display: inline-block;
+			position: relative;
+			cursor: pointer;
+			background-color: transparent;
+			border: 0;
+			padding: 0;
+			-webkit-touch-callout: none;
+			-webkit-user-select: none;
+			-moz-user-select: none;
+			-ms-user-select: none;
+			user-select: none;
+			-webkit-tap-highlight-color: rgba(0,0,0,0);
+			-webkit-tap-highlight-color: transparent;
 
 			div {
 				width: 50px;
@@ -56,8 +75,8 @@ const HeaderRightStyle = styled.header`
 				position: absolute;
 				width: 1px;
 			}
+		}
 	}
-
 `;
 
 export default HeaderRightStyle;
