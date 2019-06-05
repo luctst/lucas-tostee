@@ -9,9 +9,9 @@ const HeaderRightStyle = styled.header`
 		display: flex;
 		justify-content: flex-end;
 
-		div:first-child {
-			margin-right: 20px;
-			
+		.header--right--languages {
+			margin-right: 2em;
+
 			a {
 				display: flex;
 				align-items: center;
@@ -27,7 +27,7 @@ const HeaderRightStyle = styled.header`
 			}
 		}
 
-		div:last-child {
+		.header--right--theme {
 			touch-action: pan-x;
 			display: inline-block;
 			position: relative;

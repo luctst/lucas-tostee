@@ -10,22 +10,26 @@ const ProjectHandler = ({appState}) => {
 	});
 
 	React.useEffect(() => {
-		fetch(`${appState.helper.urlApi}/users/luctst/repos`)
+		fetch(`${appState.helper.urlApi}/users/luctst/repos?per_page=100`, {
+			headers: {
+				"User-Agent": "luctst"
+			}
+		})
 			.then(data => data.json())
 			.then(dataJson => setState({repoList: [...dataJson]}))
 			.catch(err => err);
 	}, []);
 
+	const handleChange = e => {}
+
 	return (
 		<>
 			<MainProject>
 				<HeaderRight/>
-				<section>
-					<form>
-						<input type="text" placeholder="Chercher un repository"/>
-					</form>
+				<section className="wrapper--search--repos">
+					<input type="text" placeholder="Chercher un repository" onChange={handleChange}/>
 				</section>
-				<section>
+				<section className="wrapper--list--repos">
 					{
 						state.repoList.length === 0 ?
 							<p>Recupération des données..</p>

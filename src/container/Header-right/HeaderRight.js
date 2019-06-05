@@ -2,17 +2,17 @@ import React from "react";
 import HeaderRightStyle from "./HeaderRight.style";
 import languageSVG from "../../assets/img/language.svg";
 
-const HeaderRight = () => {
+const HeaderRight = React.memo(() => {
 	return (
 		<HeaderRightStyle>
 			<nav>
-				<div>
+				<div className="header--right--languages">
 					<a>
-						<img src={languageSVG} alt='logo traduction'/>
+						<img src={languageSVG} alt='logo traduction' />
 						Français
 					</a>
 				</div>
-				<div>
+				<div className="header--right--theme">
 					<div></div>
 					<span></span>
 					<input type="checkbox" />
@@ -20,6 +20,6 @@ const HeaderRight = () => {
 			</nav>
 		</HeaderRightStyle>
 	);
-}
+});
 
 export default HeaderRight;
