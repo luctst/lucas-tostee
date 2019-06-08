@@ -1,6 +1,6 @@
 import React from 'react';
 import {Container} from "../styles/layout/Container";
-import Navigation from "../components/Navigation/Navigation";
+import HeaderLeft from "../components/HeaderLeft/HeaderLeft";
 import {BrowserRouter, Route, Switch} from "react-router-dom";
 const About = React.lazy(() => import("../components/About/About"));
 const ProjectHandler = React.lazy(() => import("./ProjectHandler/ProjectHandler"));
@@ -11,7 +11,7 @@ function App() {
   return (
 		<Container as="section">
 			<BrowserRouter>
-				<Navigation/>
+				<HeaderLeft/>
 				<React.Suspense fallback={<div>Loading...</div>}>
 					<Switch>
 							<Route exact strict sensitive path="/" component={About}/>
