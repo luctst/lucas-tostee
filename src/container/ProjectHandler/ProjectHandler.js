@@ -4,17 +4,13 @@ import HeaderRight from "../Header-right/HeaderRight";
 import RepoCard from "../../components/RepoCard/RepoCard";
 import {connect} from "react-redux";
 
-const ProjectHandler = ({appState}) => {
+const ProjectHandler = ({githubUrlApi}) => {
 	const [state, setState] = React.useState({
 		repoList: []
 	});
 
 	React.useEffect(() => {
-		fetch(`${appState.helper.urlApi}/users/luctst/repos?per_page=100`, {
-			headers: {
-				"User-Agent": "luctst"
-			}
-		})
+		fetch(`${githubUrlApi}/users/luctst/repos?per_page=100`)
 			.then(data => data.json())
 			.then(dataJson => setState({repoList: [...dataJson]}))
 			.catch(err => err);
@@ -23,32 +19,30 @@ const ProjectHandler = ({appState}) => {
 	const handleChange = e => {}
 
 	return (
-		<>
-			<MainProject>
-				<HeaderRight/>
-				<section className="wrapper--search--repos">
-					<input type="text" placeholder="Chercher un repository" onChange={handleChange}/>
-				</section>
-				<section className="wrapper--list--repos">
-					{
-						state.repoList.length === 0 ?
-							<p>Recupération des données..</p>
-						: state.repoList.map(el => {
-							return <RepoCard
-										key={el.id}
-										data={el}
-									/>;
-						})
-					}
-				</section>
-			</MainProject>
-		</>
+		<MainProject>
+			<HeaderRight/>
+			<section className="wrapper--search--repos">
+				<input type="text" placeholder="Chercher un repository" onChange={handleChange}/>
+			</section>
+			<section className="wrapper--list--repos">
+				{
+					state.repoList.length === 0 ?
+						<p>Recupération des données..</p>
+					: state.repoList.map(el => {
+						return <RepoCard
+									key={el.id}
+									data={el}
+								/>;
+					})
+				}
+			</section>
+		</MainProject>
 	);
 };
 
 const mapStateToProps = state => {
 	return {
-		appState: state
+		githubUrlApi: state.helper.urlApi
 	}
 }
 
