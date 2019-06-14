@@ -4,9 +4,10 @@ export default {
 	},
 	dataUi: {
 		headerLeft: [
-			{ isLinkRouter: true, content: "Projets", link: "projects" },
-			{ isLinkRouter: true, content: "Experiences", link: "experiences" },
+			{ isLinkRouter: true, content: "Projets", link: "/projects" },
+			{ isLinkRouter: true, content: "Experiences", link: "/experiences" },
 			{ isLinkRouter: false, content: "Twitter", link: "https://www.twitter.com/ltostee"},
+			{ isLinkRouter: false, content: "GitHub", link: "https://www.github.com/luctst"},
 			{ isLinkRouter: false, content: "lucas.tostee@gmail.com", link: "mailto:lucas.tostee@gmail.com"},
 			{ isLinkRouter: false, content: "Actuellement à New-York" }
 		],
