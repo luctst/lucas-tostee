@@ -4,7 +4,7 @@ const GlobalContainer = styled.div`
 	display: grid;
 	grid-template-columns: .6fr 2fr;
 	height: 100vh;
-	width: 100%;
+	max-width: 100%;
 	padding-right: 15px;
     padding-left: 15px;
     margin-right: auto;
