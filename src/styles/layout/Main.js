@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 const Main = styled.main`
-	overflow: auto;
+	max-height: 100vh;
 `;
 
 export default Main;
