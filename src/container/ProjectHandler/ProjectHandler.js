@@ -6,6 +6,10 @@ import RepoCard from "../../components/RepoCard/RepoCard";
 import {connect} from "react-redux";
 import Chips from "../Chips/Chips";
 
+/**
+ * Handle all the logic for the `/projects` page.
+ * @param {String} githubUrlApi The base URL github api.
+ */
 const ProjectHandler = ({githubUrlApi}) => {
 	const [state, setState] = React.useState({
 		repoList: [],
@@ -47,6 +51,7 @@ const ProjectHandler = ({githubUrlApi}) => {
 					<p>Filtrer par:</p>
 					<Chips icon="fab fa-github" content="Commit" isFilter/>
 					<Chips icon="fas fa-star" content="Stars" isFilter/>
+					<Chips icon="fas fa-heart" content="Projet que je suis" isFilter/>
 				</div>
 			</section>
 			<section className="wrapper--list--repos">
