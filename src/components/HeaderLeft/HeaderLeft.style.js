@@ -33,7 +33,7 @@ const Nav = styled.nav`
 			opacity: .6;
 			position: relative;
 			text-decoration: none;
-			font-size: 17px;
+			font-size: 16px;
 			color: ${styleUtils.headerLinksColor};
 		}
 

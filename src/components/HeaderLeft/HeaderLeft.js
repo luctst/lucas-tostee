@@ -26,8 +26,8 @@ const HeaderLeft = ({headerLinks}) => {
 								</NavLink>
 							</p>
 						} else if (!el.isLinkRouter && el.link) { // Sinon vérifie que ce soit un lien hors router
-							return <p>
-								<a key={i} href={el.link} target="_blank">{el.content}</a>
+							return <p key={i}>
+								<a  href={el.link} target="_blank">{el.content}</a>
 							</p>
 						} else { // Sinon ce n'est pas un lien.
 							return <NavigationStyle.NotLink key={i}>{el.content}</NavigationStyle.NotLink>
