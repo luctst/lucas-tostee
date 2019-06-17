@@ -4,16 +4,16 @@ import ChipsWrapper from "./Chips.style";
 /**
  * The Chips component is helpful to display Additional information's. It has three differents status check the
  * `<ChipsWrapper/>` style component documentation.
- * @param {String} icon Any chips component has an icon, enter an icon class with the font awesome.
+ * @param {String} icon Any chips component has an icon, enter an icon class with the font awesome library.
  * @param {String | Number} content The content of your Chips can be a string or a number.
- * @param {Boolean} isFilter Determine if the Chips is a filter or not.
+ * @param {Boolean} isFilterActivate Determine if the Chips is activate as a filter or not.
+ * @param {Function=} handleClick Function called when click on chips.
  */
-const Chips = ({icon, content, isFilter}) => {
+const Chips = props => {
 	return (
-		content === null ? null
-		:<ChipsWrapper contentType={content} needStyleForFilter={isFilter}>
-			<i className={icon}></i>
-			{content}
+		<ChipsWrapper contentType={props.content} isFilterActivate={props.isFilterActivate} onClick={props.handleClick}>
+			<i className={props.icon}></i>
+			{props.content === null ? "Markdown" : props.content}
 		</ChipsWrapper>
 	);
 }
