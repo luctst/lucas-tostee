@@ -1,11 +1,13 @@
 import styled from "styled-components";
 import styleUtils from "../../styles/helper";
 
-const Head = styled.header`
+const SCheaderLeft = styled.header`
 	display: flex;
 	flex-direction: column;
 	margin-top: ${styleUtils.marginTopHeader};
 	justify-content: space-between;
+	grid-row: 1 / 3;
+	max-height: inherit;
 
 	div {
 		max-width: 2em;
@@ -18,48 +20,45 @@ const Head = styled.header`
 		object-fit: cover;
 		width: 100%;
 	}
-`;
 
-const Nav = styled.nav`
-	display: flex;
-	flex-direction: column;
-	margin-bottom: ${styleUtils.marginTopHeader};
+	nav {
+		display: flex;
+		flex-direction: column;
+		margin-bottom: ${styleUtils.marginTopHeader};
 
-	p {
-		font-family: "Jacques Francois", sans-serif;
-		margin: 1vh 0;
+		p {
+			font-family: "Jacques Francois", sans-serif;
+			margin: 1vh 0;
 
-			a {
-			opacity: .6;
-			position: relative;
-			text-decoration: none;
-			font-size: 16px;
+				a {
+				opacity: .6;
+				position: relative;
+				text-decoration: none;
+				font-size: 16px;
+				color: ${styleUtils.headerLinksColor};
+			}
+
+			a::after {
+				position: absolute;
+				top: 50%;
+				content: '';
+				display: block;
+				width: 0;
+				height: 2px;
+				background: #d0021b;
+				transition: width .3s;
+			}
+
+			a:hover::after {
+				width: 100%;
+			}
+		}
+
+		.header--left--nav--noLink {
+			font-size: 12px;
 			color: ${styleUtils.headerLinksColor};
-		}
-
-		a::after {
-			position: absolute;
-			top: 50%;
-			content: '';
-			display: block;
-			width: 0;
-			height: 2px;
-			background: #d0021b;
-			transition: width .3s;
-		}
-
-		a:hover::after {
-			width: 100%;
 		}
 	}
 `;
 
-const NotLink = styled.p`
-	font-size: 12px;
-    color: ${styleUtils.headerLinksColor};
-`;
-export default {
-	Head,
-	Nav,
-	NotLink,
-};
+export default SCheaderLeft;

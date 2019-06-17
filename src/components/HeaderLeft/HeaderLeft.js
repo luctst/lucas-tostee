@@ -1,21 +1,26 @@
 import React from "react";
 import {Link, NavLink} from "react-router-dom";
 import profilPicture from "../../assets/img/pp.jpeg";
-import NavigationStyle from "./HeaderLeft.style";
-import {connect} from "react-redux";
+import SCheaderLeft from "./HeaderLeft.style";
 
-const HeaderLeft = ({headerLinks}) => {
+const HeaderLeft = () => {
+	const [state, setState] = React.useState([
+		{ isLinkRouter: true, content: "Projets", link: "/projects" },
+		{ isLinkRouter: true, content: "Experiences", link: "/experiences" },
+		{ isLinkRouter: false, content: "Actuellement à New-York" }
+	]);
+
 	return (
-		<NavigationStyle.Head>
+		<SCheaderLeft>
 			<div>
 				<Link to="/">
 					<img src={profilPicture} alt="Photo de moi"/>
 				</Link>
 			</div>
-			<NavigationStyle.Nav>
+			<nav>
 				{
-					headerLinks.map((el, i) => {
-						if (el.isLinkRouter) { // Vérifie si c'est lien pour le router (navigation)
+					state.map((el, i) => {
+						if (el.isLinkRouter) {
 							return <p>
 								<NavLink
 									strict
@@ -25,24 +30,14 @@ const HeaderLeft = ({headerLinks}) => {
 									activeStyle={{opacity: 1}}>{el.content}
 								</NavLink>
 							</p>
-						} else if (!el.isLinkRouter && el.link) { // Sinon vérifie que ce soit un lien hors router
-							return <p key={i}>
-								<a  href={el.link} target="_blank">{el.content}</a>
-							</p>
-						} else { // Sinon ce n'est pas un lien.
-							return <NavigationStyle.NotLink key={i}>{el.content}</NavigationStyle.NotLink>
+						} else {
+							return <p key={i} className="header--left--nav--noLink">{el.content}</p>
 						}
 					})
 				}
-			</NavigationStyle.Nav>
-		</NavigationStyle.Head>
+			</nav>
+		</SCheaderLeft>
 	);
 };
 
-const mapStateToProps = state => {
-	return {
-		headerLinks: state.dataUi.headerLeft
-	}
-}
-
-export default connect(mapStateToProps, null)(HeaderLeft);
+export default HeaderLeft;
