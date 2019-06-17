@@ -1,27 +1,38 @@
 import React from "react";
 import fetchData from "../../utils/fetchData";
 import MainProject from "./ProjectHandler.style";
-import HeaderRight from "../Header-right/HeaderRight";
+import Loader from "../../components/Loader/Loader";
 import RepoCard from "../../components/RepoCard/RepoCard";
-import {connect} from "react-redux";
 import Chips from "../Chips/Chips";
 
 /**
  * Handle all the logic for the `/projects` page.
- * @param {String} githubUrlApi The base URL github api.
  */
-const ProjectHandler = ({githubUrlApi}) => {
+const ProjectHandler = () => {
 	const [state, setState] = React.useState({
+		urlApi: "https://api.github.com",
 		repoList: [],
-		modeList: true,
-		repoToFind: ""
+		repoStarredList: [],
+		dataFetched: false,
+		repoToFind: "",
+		filterList: [
+			{content: "Commit", icon: "fab fa-github"},
+			{content: "Stars", icon: "fas fa-star"},
+			{content: "J'aimes", icon: "fas fa-heart"}
+		],
+		filterActive: 0
 	});
 
 	React.useEffect(() => {
 		(async function() {
 			const newState = {...state};
-			const getReposList = await fetchData(`${githubUrlApi}/users/luctst/repos?per_page=100`);
+			const getReposList = await fetchData(`${state.urlApi}/users/luctst/repos?per_page=100`);
+			const getReposStarred = await fetchData(`${state.urlApi}/users/luctst/starred?per_page=100`);
+
 			newState.repoList = [...getReposList];
+			newState.repoStarredList = [...getReposStarred];
+			newState.dataFetched = true;
+
 			setState(newState);
 		})();
 	}, []);
@@ -29,42 +40,56 @@ const ProjectHandler = ({githubUrlApi}) => {
 	const handleChange = e => {
 		const newState = {...state};
 
-		if (e.target.value === "") {
-			newState.modeList = true;
-			setState(newState);
-		} else {
-			newState.modeList = false;
-			newState.repoToFind = e.target.value;
-			setState(newState);
-		}
+		newState.repoToFind = e.target.value;
+		setState(newState);
 	};
 
+	const changeFilter = (index) => {
+		const newState = {...state};
+		newState.filterActive = index;
+
+		setState(newState);
+	}
 
 	return (
 		<MainProject>
-			<HeaderRight/>
 			<section className="wrapper--search--repos">
 				<div className="wrapper--search--repos--find">
 					<input type="text" placeholder="Chercher un repository par titre" onChange={handleChange}/>
 				</div>
 				<div className="wrapper--search--repos--filters">
 					<p>Filtrer par:</p>
-					<Chips icon="fab fa-github" content="Commit" isFilter/>
-					<Chips icon="fas fa-star" content="Stars" isFilter/>
-					<Chips icon="fas fa-heart" content="Projet que je suis" isFilter/>
+					{state.filterList.map((el, i) => {
+						return <Chips
+									icon={el.icon}
+									content={el.content}
+									key={i}
+									isFilterActivate={i === state.filterActive ? true : null}
+									handleClick={() => changeFilter(i)}
+								/>
+					})}
 				</div>
 			</section>
 			<section className="wrapper--list--repos">
 				{
 					(() => {
-						if (state.repoList.length === 0) {
-							return <p>Récupération des données.</p>
-						} else if (state.modeList) {
-							return state.repoList.map(el => <RepoCard key={el.id} data={el} />)
-						} else if (!state.modeList) {
-							return state.repoList.map(el => {
-								return el.name.startsWith(state.repoToFind) ? <RepoCard key={el.id} data={el}/> : null
-							});
+						if (state.dataFetched) {
+							if (state.filterActive !== 2 && state.repoToFind === "") {
+								// 1. Default, display all repos created without any search name filter.
+								return state.repoList.map(el => <RepoCard key={el.id} data={el} />);
+
+							} else if (state.repoToFind !== "") {
+								// 2. Display a specific repo in terms of `state.filterActive`
+								if (state.filterActive === 0) return state.repoList.map(el => el.name.startsWith(state.repoToFind) ? <RepoCard key={el.id} data={el} /> : null);
+
+								if (state.filterActive === 2) return state.repoStarredList.map(el => el.name.startsWith(state.repoToFind) ? <RepoCard key={el.id} data={el} /> : null);
+
+							} else if (state.filterActive === 2) {
+								// 3. Display all the repos that i starred or contributed.
+								return state.repoStarredList.map(el => <RepoCard key={el.id} data={el} />);
+							}
+						} else {
+							return <Loader content="Recupération des données.."/>;
 						}
 					})()
 				}
@@ -73,10 +98,4 @@ const ProjectHandler = ({githubUrlApi}) => {
 	);
 };
 
-const mapStateToProps = state => {
-	return {
-		githubUrlApi: state.helper.urlApi
-	}
-}
-
-export default connect(mapStateToProps, null)(ProjectHandler);
+export default ProjectHandler;
