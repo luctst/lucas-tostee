@@ -2,7 +2,7 @@ import styled from "styled-components";
 import Main from "../../styles/layout/Main";
 import styleUtils from "../../styles/helper";
 
-const MainAbout = styled(Main)`
+const SCMainAbout = styled(Main)`
 	padding-left: 1em;
 	display: flex;
 	flex-direction: column;
@@ -23,8 +23,21 @@ const MainAbout = styled(Main)`
 				font-size: 18px;
 				line-height: 30px;
 				color: ${styleUtils.mainColor};
+				opacity: ${styleUtils.mainOpacity};
+
+				a {
+					color: ${styleUtils.mainColor};
+				}
+
+				a:first-child:hover {
+					color: #00acee;
+				}
+
+				a:last-child:hover {
+					color: #AD5C51;
+				}
 			}
 	}
 `;
 
-export default MainAbout;
+export default SCMainAbout;
