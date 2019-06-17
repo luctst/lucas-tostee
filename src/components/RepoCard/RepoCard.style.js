@@ -21,7 +21,7 @@ const CardWrapper = styled.a`
 	p {
 		font-size: 16px;
 		line-height: 24px;
-		opacity: .8;
+		opacity: ${styleUtils.mainOpacity};
 		color: ${styleUtils.mainColor};
 	}
 
