@@ -12,12 +12,14 @@ const HeaderRightStyle = styled.header`
 		.header--right--languages {
 			margin-right: 2em;
 
-			a {
+			button {
 				display: flex;
 				align-items: center;
 				color: ${styleUtils.mainColor};
 				font-size: 16px;
 				font-family: 'Jacques Francois', sans-serif;
+				background-color: transparent;
+				border: none;
 
 				img {
 					width: 20px;
