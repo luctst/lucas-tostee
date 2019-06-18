@@ -8,10 +8,10 @@ const HeaderRight = React.memo(({headerRight}) => {
 		<HeaderRightStyle>
 			<nav>
 				<div className="header--right--languages">
-					<a>
+					<button>
 						<img src={languageSVG} alt='logo traduction' />
 						{headerRight.languageDefault}
-					</a>
+					</button>
 				</div>
 				<div className="header--right--theme">
 					<div></div>
