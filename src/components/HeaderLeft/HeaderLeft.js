@@ -1,25 +1,43 @@
 import React from "react";
+import fetchData from "../../utils/fetchData";
+import formatEvent from "../../utils/formatEvent";
 import {Link, NavLink} from "react-router-dom";
-import profilPicture from "../../assets/img/pp.jpeg";
 import SCheaderLeft from "./HeaderLeft.style";
+import profilPicture from "../../assets/img/pp.jpeg";
+import Loader from "../Loader/Loader";
 
 const HeaderLeft = () => {
-	const [state, setState] = React.useState([
-		{ isLinkRouter: true, content: "Projets", link: "/projects" },
-		{ isLinkRouter: true, content: "Experiences", link: "/experiences" },
-		{ isLinkRouter: false, content: "Actuellement à New-York" }
-	]);
+	const [state, setState] = React.useState({
+		dataEventFetched: false,
+		dataNavLinks: [
+			{ isLinkRouter: true, content: "Projets", link: "/projects" },
+			{ isLinkRouter: true, content: "Experiences", link: "/experiences" },
+			{ isLinkRouter: false, content: "Actuellement à New-York" },
+			{ isLinkRouter: false, content: {}} // Will be the data sent by the `formatEvent` fn.
+		]
+	});
 
+	React.useEffect(() => {
+		(async function() {
+			const getLastEvent = await fetchData(`https://api.github.com/users/luctst/events?per_page=1`);
+			const newState = {...state};
+			const lastActivity = formatEvent(getLastEvent[0]);
+
+			newState.dataNavLinks[newState.dataNavLinks.length - 1].content = lastActivity;
+			newState.dataEventFetched = true;
+			setState(newState);
+		})();
+	}, []);
 	return (
 		<SCheaderLeft>
 			<div>
 				<Link to="/">
-					<img src={profilPicture} alt="Photo de moi"/>
+					<img src={profilPicture} alt="Moi"/>
 				</Link>
 			</div>
 			<nav>
 				{
-					state.map((el, i) => {
+					state.dataNavLinks.map((el, i) => {
 						if (el.isLinkRouter) {
 							return <p>
 								<NavLink
@@ -30,7 +48,10 @@ const HeaderLeft = () => {
 									activeStyle={{opacity: 1}}>{el.content}
 								</NavLink>
 							</p>
-						} else {
+						} else if (typeof el.content === "object") {
+							return state.dataEventFetched ? el.content : <Loader content="Chargement"/>
+						}
+						 else {
 							return <p key={i} className="header--left--nav--noLink">{el.content}</p>
 						}
 					})
