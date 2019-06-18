@@ -36,27 +36,52 @@ const SCheaderLeft = styled.header`
 				text-decoration: none;
 				font-size: 16px;
 				color: ${styleUtils.headerLinksColor};
+
+					&::after {
+						position: absolute;
+						top: 50%;
+						content: '';
+						display: block;
+						width: 0;
+						height: 2px;
+						background: #d0021b;
+						transition: width .3s;
+					}
+
+					&:hover::after {
+						width: 100%;
+					}
 			}
 
-			a::after {
-				position: absolute;
-				top: 50%;
-				content: '';
-				display: block;
-				width: 0;
-				height: 2px;
-				background: #d0021b;
-				transition: width .3s;
-			}
 
-			a:hover::after {
-				width: 100%;
+		}
+
+		span {
+			color: ${styleUtils.headerLinksColor};
+			font-size: 12px;
+
+			&::after {
+				width: 15px;
+				height: 15px;
 			}
 		}
 
-		.header--left--nav--noLink {
+		.header--left--nav--noLink,
+		.header--left--nav--activityLink {
 			font-size: 12px;
 			color: ${styleUtils.headerLinksColor};
+		}
+
+		.header--left--nav--activityLink {
+			a {
+				opacity: 1;
+				font-size: 12px;
+
+				&::after {
+					left: 0;
+					height: 1px;
+				}
+			}
 		}
 	}
 `;
