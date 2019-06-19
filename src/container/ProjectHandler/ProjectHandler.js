@@ -9,87 +9,101 @@ import Chips from "../Chips/Chips";
  * Handle all the logic for the `/projects` page.
  */
 const ProjectHandler = () => {
+	const refInput = React.useRef(); // used for reset the input value when filter change.
+	const [filtresList] = React.useState([ // New state to not pollute the `state` object.
+		{ icon: "fab fa-github", content: "Commits récents" },
+		{ icon: "fas fa-heart", content: "J'aimes" },
+	]);
 	const [state, setState] = React.useState({
-		urlApi: "https://api.github.com",
-		repoList: [],
-		repoStarredList: [],
 		dataFetched: false,
-		repoToFind: "",
-		filterList: [
-			{content: "Commit", icon: "fab fa-github"},
-			{content: "Stars", icon: "fas fa-star"},
-			{content: "J'aimes", icon: "fas fa-heart"}
-		],
-		filterActive: 0
+		repos: {
+			reposList: {},
+			reposByName: [],
+			reposStarred: {}
+		},
+		filtres: {
+			filterActive: 0,
+			activePage: 1,
+			searchByName: false
+		}
 	});
+    console.log(state)
 
 	React.useEffect(() => {
 		(async function() {
 			const newState = {...state};
-			const getReposList = await fetchData(`${state.urlApi}/users/luctst/repos?per_page=100`);
-			const getReposStarred = await fetchData(`${state.urlApi}/users/luctst/starred?per_page=100`);
+			const getReposList = await fetchData("https://api.github.com/user/repos?page=1&sort=pushed&per_page=6");
 
-			newState.repoList = [...getReposList];
-			newState.repoStarredList = [...getReposStarred];
+			newState.repos.reposList[1] = [...getReposList];
 			newState.dataFetched = true;
-
 			setState(newState);
 		})();
 	}, []);
 
-	const handleChange = e => {
-		const newState = {...state};
+	const searchByName = e => {
+		(async function() {
 
-		newState.repoToFind = e.target.value;
-		setState(newState);
-	};
+		})()
+	}
 
-	const changeFilter = (index) => {
-		const newState = {...state};
-		newState.filterActive = index;
+	const changeFilter = index => {
+		(async function () {
+			const newState = {...state};
 
-		setState(newState);
+			if (index === 1) {
+				if (!newState.repos.reposStarred[newState.filtres.activePage]) {
+					const getReposStarred = await fetchData(`https://api.github.com/user/starred?page=1&per_page=6`);
+					refInput.current.value = "";
+					newState.repos.reposStarred[1] = [...getReposStarred];
+				}
+			}
+
+			newState.filtres.filterActive = index;
+			setState(newState);
+		})()
 	}
 
 	return (
-		<MainProject>
+		<MainProject disabled={state.filtres.filterActive === 1 && true}>
 			<section className="wrapper--search--repos">
 				<div className="wrapper--search--repos--find">
-					<input type="text" placeholder="Chercher un repository par titre" onChange={handleChange}/>
+					<input
+						disabled={state.filtres.filterActive === 1 && "disabled"}
+						type="text"
+						placeholder={state.filtres.filterActive === 1 ? "Impossible de chercher la-dedans, en discutions avec Github." : "Chercher un repository par nom"}
+						onChange={searchByName}
+						ref={refInput}
+					/>
 				</div>
 				<div className="wrapper--search--repos--filters">
 					<p>Filtrer par:</p>
-					{state.filterList.map((el, i) => {
+					{filtresList.map((el, i) => {
 						return <Chips
 									icon={el.icon}
 									content={el.content}
+									isFilterActivate={i === state.filtres.filterActive && true}
 									key={i}
-									isFilterActivate={i === state.filterActive ? true : null}
 									handleClick={() => changeFilter(i)}
 								/>
 					})}
 				</div>
 			</section>
+			<p><a href='https://gitstalk.netlify.com/luctst' target="_blank">Stalk me !!!</a></p>
 			<section className="wrapper--list--repos">
 				{
-					(() => {
-						if (state.dataFetched) {
-							if (state.filterActive !== 2 && state.repoToFind === "") {
-								// 1. Default, display all repos created without any search name filter.
-								return state.repoList.map(el => <RepoCard key={el.id} data={el} />);
-
-							} else if (state.repoToFind !== "") {
-								// 2. Display a specific repo in terms of `state.filterActive`
-								if (state.filterActive === 0) return state.repoList.map(el => el.name.startsWith(state.repoToFind) ? <RepoCard key={el.id} data={el} /> : null);
-
-								if (state.filterActive === 2) return state.repoStarredList.map(el => el.name.startsWith(state.repoToFind) ? <RepoCard key={el.id} data={el} /> : null);
-
-							} else if (state.filterActive === 2) {
-								// 3. Display all the repos that i starred or contributed.
-								return state.repoStarredList.map(el => <RepoCard key={el.id} data={el} />);
+					(function () {
+						if (state.dataFetched) { // Data are fetched ?
+							if (state.filtres.filterActive === 0) { // If filter is Commits
+								if (state.filtres.searchByName) { // Does the search bar is active
+									return state.repos.reposByName.map((el, i) => <RepoCard key={i} data={el} />);
+								} else { // Either return this.
+									return state.repos.reposList[state.filtres.activePage].map((el, i) => <RepoCard key={i} data={el}/>);
+								}
+							} else { // Either filter is "Likes".
+								return state.repos.reposStarred[state.filtres.activePage].map((el, i) => <RepoCard key={i} data={el} />)
 							}
 						} else {
-							return <Loader content="Recupération des données.."/>;
+							return <Loader content="Recupération des données"/>
 						}
 					})()
 				}
