@@ -6,10 +6,10 @@ import React from "react";
  */
 const formatEvent = data => {
 	const repo = data.repo.name.split("/");
-	const hours = Math.floor(Math.abs(new Date() - new Date(data.created_at)) / 36e5);
+	const hours = Math.abs(new Date() - new Date(data.created_at)) / 36e5;
 	const Element = props => {
 		return <p className="header--left--nav--activityLink">
-				Il y a {hours > 1 ? `${hours}h` : `${hours}mn`} {props.content}
+				Il y a {hours >= 0.60 ? `${Math.round(hours)}h` : `${Math.round(hours * 100) / 100}mn`} {props.content}
 				<a href={`https://www.github.com/${data.repo.name}`} target="_blank" rel="noopener noreferrer">{repo[1]}</a>
 			</p>
 	}
