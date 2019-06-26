@@ -19,7 +19,8 @@ const HeaderLeft = () => {
 
 	React.useEffect(() => {
 		(async function() {
-			const getLastEvent = await fetchData(`https://api.github.com/user/events?per_page=1`);
+			const getLastEvent = await fetchData(`https://api.github.com/users/luctst/events?per_page=1`);
+            console.log("TCL: HeaderLeft -> getLastEvent", getLastEvent)
 			const newState = {...state};
 			const lastActivity = formatEvent(getLastEvent[0]);
 
