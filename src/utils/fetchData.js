@@ -8,7 +8,7 @@ const fetchData = async url => {
 		const data = await fetch(url, {
 			method: "get",
 			headers: {
-				"Authorization": "token 3a5704db47d697270ecfb1beb60ec4e9148e2977",
+				"Authorization": "token d4865101c7558da4e6ce8fc7e6b0bd4549d82031",
 				"User-Agent": "luctst",
 			}
 		});
