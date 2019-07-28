@@ -1,18 +1,11 @@
 import React from "react";
 import HeaderRightStyle from "./HeaderRight.style";
-import languageSVG from "../../assets/img/language.svg";
-import {connect} from "react-redux";
+import { connect } from "react-redux";
 
-const HeaderRight = React.memo(({headerRight}) => {
+const HeaderRight = React.memo(({ headerRight }) => {
 	return (
 		<HeaderRightStyle>
 			<nav>
-				<div className="header--right--languages">
-					<button>
-						<img src={languageSVG} alt='logo traduction' />
-						{headerRight.languageDefault}
-					</button>
-				</div>
 				<div className="header--right--theme">
 					<div></div>
 					<span></span>
