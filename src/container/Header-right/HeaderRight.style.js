@@ -9,26 +9,6 @@ const HeaderRightStyle = styled.header`
 		display: flex;
 		justify-content: flex-end;
 
-		.header--right--languages {
-			margin-right: 2em;
-
-			button {
-				display: flex;
-				align-items: center;
-				color: ${styleUtils.mainColor};
-				font-size: 16px;
-				font-family: 'Jacques Francois', sans-serif;
-				background-color: transparent;
-				border: none;
-
-				img {
-					width: 20px;
-					height: 20px;
-					margin-right: 10px;
-				}
-			}
-		}
-
 		.header--right--theme {
 			touch-action: pan-x;
 			display: inline-block;
