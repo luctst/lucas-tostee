@@ -9,22 +9,22 @@ const formatEvent = data => {
 	const hours = Math.abs(new Date() - new Date(data.created_at)) / 36e5;
 	const Element = props => {
 		return <p className="header--left--nav--activityLink">
-				Il y a {hours >= 0.60 ? `${Math.round(hours)}h` : `${Math.round(hours * 100) / 100}mn`} {props.content}
-				<a href={`https://www.github.com/${data.repo.name}`} target="_blank" rel="noopener noreferrer">{repo[1]}</a>
-			</p>
+			{hours >= 0.60 ? `${Math.round(hours)}h ago` : `${Math.round(hours * 100) / 100 * 100}mn ago`} {props.content}
+			<a href={`https://www.github.com/${data.repo.name}`} target="_blank" rel="noopener noreferrer">{repo[1]}</a>
+		</p>
 	}
 
 	switch (data.type) {
 		case "WatchEvent":
-			return <Element content="a aimé "/>;
+			return <Element content="had liked " />;
 		case "PushEvent":
-			return <Element content="a commit sur "/>;
+			return <Element content="had commit on " />;
 		case "IssuesEvent":
-			return <Element content={`a ${data.payload.action} une issue sur `}/>;
+			return <Element content={`${data.payload.action} an issue on `} />;
 		case "PullRequestEvent":
-			return <Element content={`a ${data.payload.action} sur `}/>;
+			return <Element content={`${data.payload.action} on `} />;
 		case "CreateEvent":
-			return <Element content="a crée le repo "/>;
+			return <Element content="had created " />;
 		default:
 			break;
 	}
