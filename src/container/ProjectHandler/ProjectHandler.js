@@ -10,31 +10,25 @@ import Chips from "../Chips/Chips";
  */
 const ProjectHandler = () => {
 	const refInput = React.useRef(); // used for reset the input value when filter change.
-	const [filtresList] = React.useState([ // New state to not pollute the `state` object.
-		{ icon: "fab fa-github", content: "Commits récents" },
-		{ icon: "fas fa-heart", content: "J'aimes" },
-	]);
 	const [state, setState] = React.useState({
 		dataFetched: false,
-		repos: {
-			reposList: {},
-			reposByName: [],
-			reposStarred: {}
-		},
-		filtres: {
-			filterActive: 0,
-			activePage: 1,
-			searchByName: false
-		}
+		searchByName: false,
+		filterActive: 0,
+		reposList: [],
+		reposByName: [],
+		reposStarred: [],
+		filtresList: [
+			{ icon: "fab fa-github", content: "Recents commits"},
+			{ icon: "fas fa-heart", content: "Likes"},
+		]
 	});
-    console.log(state)
 
 	React.useEffect(() => {
 		(async function() {
 			const newState = {...state};
-			const getReposList = await fetchData("https://api.github.com/user/repos?page=1&sort=pushed&per_page=6");
+			const getReposList = await fetchData("https://api.github.com/user/repos?sort=pushed&per_page=6");
 
-			newState.repos.reposList[1] = [...getReposList];
+			newState.reposList = [...getReposList];
 			newState.dataFetched = true;
 			setState(newState);
 		})();
@@ -42,65 +36,84 @@ const ProjectHandler = () => {
 
 	const searchByName = e => {
 		(async function() {
+			if (e.target.value === "") {
+				const newState = {...state};
 
+				
+			} else {
+				const newState = {...state};
+				const getReposByName = await fetchData(`https://api.github.com/search/repositories?q=${e.target.value}+in:name+user:luctst`);
+
+				newState.reposByName = [...getReposByName.items];
+				newState.searchByName = true;
+
+				setState(newState);
+			}
 		})()
 	}
 
 	const changeFilter = index => {
 		(async function () {
-			const newState = {...state};
+			if (index !== state.filterActive) { // First, check if index is not = to filterActive.
+				const newState = {...state};
 
-			if (index === 1) {
-				if (!newState.repos.reposStarred[newState.filtres.activePage]) {
-					const getReposStarred = await fetchData(`https://api.github.com/user/starred?page=1&per_page=6`);
-					refInput.current.value = "";
-					newState.repos.reposStarred[1] = [...getReposStarred];
+				if (index === 1) { // Click on J'aimes, switch view on starred repos list.
+					if (newState.reposStarred.length === 0) { // if reposStarred already filled no need to re fetch data.
+						const getReposStarred = await fetchData(`https://api.github.com/user/starred?page=1&per_page=6`);
+
+						newState.reposStarred = [...getReposStarred];
+					}
+
+					if (refInput.current.value > 0) refInput.current.value = "";
+					newState.filterActive = index;
+
+					setState(newState);
+				} else { // Else switch on reposList view.
+					newState.filterActive = 0;
+					setState(newState);
 				}
 			}
-
-			newState.filtres.filterActive = index;
-			setState(newState);
 		})()
 	}
 
 	return (
-		<MainProject disabled={state.filtres.filterActive === 1 && true}>
+		<MainProject disabled={state.filterActive === 1 && true}>
 			<section className="wrapper--search--repos">
 				<div className="wrapper--search--repos--find">
 					<input
-						disabled={state.filtres.filterActive === 1 && "disabled"}
+						disabled={state.filterActive === 1 && "disabled"}
 						type="text"
-						placeholder={state.filtres.filterActive === 1 ? "Impossible de chercher la-dedans, en discutions avec Github." : "Chercher un repository par nom"}
+						placeholder={state.filterActive === 0 ? "Search among all my repositories" : "You can't search here for now..."}
 						onChange={searchByName}
 						ref={refInput}
 					/>
 				</div>
 				<div className="wrapper--search--repos--filters">
 					<p>Filtrer par:</p>
-					{filtresList.map((el, i) => {
+					{state.filtresList.map((el, i) => {
 						return <Chips
 									icon={el.icon}
 									content={el.content}
-									isFilterActivate={i === state.filtres.filterActive && true}
+									isFilterActivate={i === state.filterActive && true}
 									key={i}
 									handleClick={() => changeFilter(i)}
 								/>
 					})}
 				</div>
 			</section>
-			<p><a href='https://gitstalk.netlify.com/luctst' target="_blank">Stalk me !!!</a></p>
+			<p><a href='https://gitstalk.netlify.com/luctst' target="_blank">See more ?</a></p>
 			<section className="wrapper--list--repos">
 				{
 					(function () {
 						if (state.dataFetched) { // Data are fetched ?
-							if (state.filtres.filterActive === 0) { // If filter is Commits
-								if (state.filtres.searchByName) { // Does the search bar is active
-									return state.repos.reposByName.map((el, i) => <RepoCard key={i} data={el} />);
+							if (state.filterActive === 0) { // If filter is Commits
+								if (state.searchByName) { // Does the search bar is active
+									return state.reposByName.map((el, i) => <RepoCard key={i} data={el} />);
 								} else { // Either return this.
-									return state.repos.reposList[state.filtres.activePage].map((el, i) => <RepoCard key={i} data={el}/>);
+									return state.reposList.map((el, i) => <RepoCard key={i} data={el}/>);
 								}
 							} else { // Either filter is "Likes".
-								return state.repos.reposStarred[state.filtres.activePage].map((el, i) => <RepoCard key={i} data={el} />)
+								return state.reposStarred.map((el, i) => <RepoCard key={i} data={el} />)
 							}
 						} else {
 							return <Loader content="Recupération des données"/>
