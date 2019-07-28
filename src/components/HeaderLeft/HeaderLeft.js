@@ -10,9 +10,8 @@ const HeaderLeft = () => {
 	const [state, setState] = React.useState({
 		dataEventFetched: false,
 		dataNavLinks: [
-			{ isLinkRouter: true, content: "Projets", link: "/projects" },
-			{ isLinkRouter: true, content: "Experiences", link: "/experiences" },
-			{ isLinkRouter: false, content: "Actuellement à New-York" },
+			{ isLinkRouter: true, content: "Projects", link: "/projects" },
+			{ isLinkRouter: false, content: "Currently in Paris" },
 			{ isLinkRouter: false, content: {}} // Will be the data sent by the `formatEvent` fn.
 		]
 	});
@@ -20,7 +19,6 @@ const HeaderLeft = () => {
 	React.useEffect(() => {
 		(async function() {
 			const getLastEvent = await fetchData(`https://api.github.com/users/luctst/events?per_page=1`);
-            console.log("TCL: HeaderLeft -> getLastEvent", getLastEvent)
 			const newState = {...state};
 			const lastActivity = formatEvent(getLastEvent[0]);
 
