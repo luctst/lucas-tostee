@@ -5,7 +5,6 @@ import store from "./appStore";
 import { Container } from "./styles/layout/Container";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import HeaderLeft from "./components/HeaderLeft/HeaderLeft";
-import HeaderRight from './container/Header-right/HeaderRight';
 import Loader from './components/Loader/Loader';
 import * as serviceWorker from './serviceWorker';
 const About = React.lazy(() => import("./components/About/About"));
@@ -17,7 +16,6 @@ render(
 		<Container as="section">
 			<BrowserRouter>
 				<HeaderLeft />
-				<HeaderRight />
 				<React.Suspense fallback={<div><Loader /></div>}>
 					<Switch>
 						<Route exact strict sensitive path="/" component={About} />
