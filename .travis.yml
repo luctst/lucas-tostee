@@ -12,7 +12,7 @@ before_install:
 install:
 - npm install
 script:
-- npm run build
+- CI=false npm run build
 - npm run test
 env:
   matrix:
