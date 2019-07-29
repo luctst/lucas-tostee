@@ -25,7 +25,7 @@ const About = (React.memo(() => {
 		<SCMainAbout>
 			<section>
 				<h1>Welcome !</h1>
-				<h2>I have a more suitable profile for client-side code, but I am now turning to a more versatile profile and training regularly by contributing to open source projects. I love open source and i'll like to be able to earn my life with it, i'm currently manage more than {repoLength !== 0 && repoLength} projects that you can find on my <a href="https://www.github.com/luctst" target="_blank" rel="noopener noreferrer">GitHub</a> and keep me updated about changes on my <a href="https://twitter.com/luctstt" target="_blank" rel="noopener noreferrer">Twitter</a> . Do not hesitate to follow me and / or support me in my diferents projects :)</h2>
+				<h2>Hello i'm Lucas, i'm 24 years old and i live in Paris, i have a more suitable profile for client-side code, but I am now turning to a more versatile profile and training regularly by contributing to open source projects. I love open source and i'll like to be able to earn my life with it, i'm currently manage more than {repoLength !== 0 && repoLength} projects that you can find on my <a href="https://www.github.com/luctst" target="_blank" rel="noopener noreferrer">GitHub</a> and keep me updated about changes on my <a href="https://twitter.com/luctstt" target="_blank" rel="noopener noreferrer">Twitter</a> . Do not hesitate to follow me and / or support me in my diferents projects :)</h2>
 			</section>
 		</SCMainAbout>
 	);
