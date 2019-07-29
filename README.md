@@ -1,4 +1,7 @@
 # Create-react-app personal config.
+[![Build Status](https://travis-ci.com/luctst/portfolio.svg?branch=master)](https://travis-ci.com/luctst/portfolio)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/a917ee11-e6fe-48e7-b803-da484b39af5e/deploy-status)](https://app.netlify.com/sites/lucastostee/deploys)
+
 *This project exist because is it complicated to configurated your web-app, this repository is a starter-kit for quickly launch your app with all the tools you need.*
 > **Note** - This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
