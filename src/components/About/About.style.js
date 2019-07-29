@@ -3,13 +3,10 @@ import Main from "../../styles/layout/Main";
 import styleUtils from "../../styles/helper";
 
 const SCMainAbout = styled(Main)`
-	padding-left: 1em;
 	display: flex;
-	flex-direction: column;
+	align-items: center;
 
 	section {
-		margin: auto 0;
-
 			h1 {
 				font-family: 'Jacques Francois', sans-serif;
 				font-size: 64px;
