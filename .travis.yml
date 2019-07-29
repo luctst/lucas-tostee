@@ -1,21 +1,18 @@
 language: node_js
-
 node_js:
-- "lts/*"
-
+- lts/*
 os:
 - linux
 - osx
-
 cache:
   directories:
-    - node_modules
-
+  - node_modules
 before_install:
-  - npm i -g npm@latest
-
+- npm i -g npm@latest
 install:
 - npm install
-
 script:
 - npm run test
+env:
+  matrix:
+    secure: PpA84zpr81c7d/Cwt68Sk7aV1jpQ7d82DpX7gtJdt4v0VrI0Kx+odExeSEx/x9Ms8qxOo+ZoAMHxAP/qIoQoTckVyxPXWxK6KwjJC0wvhQS1io4kSwrb+gxQecrYjae82E86SxwuKgdX0yUc7fzDxfIHQxb+vDNFgj3GV1zU1wYBqcMbPnTxkhPFDXeEY7BbcI/GmesoV5BCgNEEpWOqORZ7UDH7BtHEp53Hn2i98r3H28MOdPA+RFDjJFKB9ANmNBTYhX32siSDjEvQv8hHdiahLiDA8E8GtyVMnwVJZUJGVCP+fVW1Rhx09T7yS2APYmYtJXd56u1Kg7aUv6kX11M5TYjbrJewHSTok3WLX/rXzUREqF8LC8iusxmW9mzEMzjhOyowTVAywW+XbYEaqDpc6EVUpd+PBoFKjtsW4FqeOBiC6D6Hxg4qJCPM514JooQg+5oMxvErt9iW+Z5vZ75bRIa1Ad4tUplQhkmN0mboNMyOPAjAf9ndSdzLhB4DsdK5Nx+c4mnMKL67QciiSL+3CXBr/lL+O3iazFwfuR0RnjDEHXP3lC3hd5IlNKHCJgyOxbecz1Flb2dMzRepCnru24R7+l08tWwS8v/tzevy2iZdHEHORaWy3wI6JobeGuHfQWrbpqYK5/OHx7Z5DHWUj4FAClyJT8rztnoMFrM=
