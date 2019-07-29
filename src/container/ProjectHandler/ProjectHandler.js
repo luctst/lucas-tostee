@@ -19,14 +19,14 @@ const ProjectHandler = () => {
 		reposStarred: [],
 		filtresList: [
 			{ icon: "fab fa-github", content: "Recents commits"},
-			{ icon: "fas fa-heart", content: "Likes"},
+			{ icon: "fas fa-heart", content: "Last repos liked"},
 		]
 	});
 
 	React.useEffect(() => {
 		(async function() {
 			const newState = {...state};
-			const getReposList = await fetchData("https://api.github.com/user/repos?sort=pushed&per_page=6");
+			const getReposList = await fetchData("https://api.github.com/user/repos?sort=pushed&per_page=8");
 
 			newState.reposList = [...getReposList];
 			newState.dataFetched = true;
@@ -39,7 +39,9 @@ const ProjectHandler = () => {
 			if (e.target.value === "") {
 				const newState = {...state};
 
-				
+				newState.searchByName = false;
+
+				setState(newState);
 			} else {
 				const newState = {...state};
 				const getReposByName = await fetchData(`https://api.github.com/search/repositories?q=${e.target.value}+in:name+user:luctst`);
@@ -59,7 +61,7 @@ const ProjectHandler = () => {
 
 				if (index === 1) { // Click on J'aimes, switch view on starred repos list.
 					if (newState.reposStarred.length === 0) { // if reposStarred already filled no need to re fetch data.
-						const getReposStarred = await fetchData(`https://api.github.com/user/starred?page=1&per_page=6`);
+						const getReposStarred = await fetchData(`https://api.github.com/user/starred?page=1&per_page=8`);
 
 						newState.reposStarred = [...getReposStarred];
 					}
