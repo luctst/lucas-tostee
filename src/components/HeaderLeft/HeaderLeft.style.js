@@ -6,7 +6,6 @@ const SCheaderLeft = styled.header`
 	flex-direction: column;
 	margin-top: ${styleUtils.marginTopHeader};
 	justify-content: space-between;
-	grid-row: 1 / 3;
 	max-height: inherit;
 
 	div {
