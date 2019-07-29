@@ -1,15 +1,17 @@
 import styled from "styled-components";
 import Main from "../../styles/layout/Main";
+import styleUtils from "../../styles/helper";
 
 const MainProject = styled(Main)`
 	.wrapper--search--repos {
-		margin: 2.5em 0;
+		margin-top: ${styleUtils.marginTopHeader};
+		margin-bottom: 1.275rem;
 
 		&--find {
 			input {
 				width: 97%;
 				height: 1.3em;
-				padding: .375rem .75rem;
+				padding: .375rem 0 .375rem .75rem;
 				font-size: 1rem;
 				font-weight: 400;
 				line-height: 1.5;

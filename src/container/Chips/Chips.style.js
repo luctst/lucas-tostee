@@ -46,6 +46,8 @@ const ChipsWrapper = styled.div`
 					return `background-color: #294E80; color: #fff`;
 				case "Go":
 					return `background-color: #E0EBF5; color: #fff;`;
+				case null:
+					return `background-color: #333; color: #fff;`;
 				default:
 					return null;
 			}
