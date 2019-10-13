@@ -10,12 +10,9 @@ const SCloaderAnim = keyframes`
 `;
 
 const SCloader = styled.span`
-	display: flex;
-	align-items: center;
-
 	&::after {
 		content: " ";
-		display: block;
+		display: inline-block;
 		width: 20px;
 		height: 20px;
 		margin-left: 1em;

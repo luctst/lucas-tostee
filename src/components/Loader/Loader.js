@@ -1,8 +1,8 @@
 import React from "react";
 import SCloader from "./Loader.style";
 
-const Loader = ({content}) => {
-	return <SCloader>{content}</SCloader>
+const Loader = () => {
+	return <SCloader></SCloader>
 };
 
 export default Loader;
