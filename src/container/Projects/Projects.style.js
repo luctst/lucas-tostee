@@ -2,7 +2,7 @@ import styled from "styled-components";
 import styleHelper from "../../styles/helper";
 
 const SCprojects = styled.details`
-	margin-bottom: 2em;
+	margin-bottom: .5em;
 	summary {
 		color: ${styleHelper.mainColor};
 		font-family: 'Jacques Francois', sans-serif;
