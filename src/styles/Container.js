@@ -11,7 +11,6 @@ export const Container = styled(GlobalContainer)`
 			cursor: pointer;
 		}
 	}
-
 	@media (min-width: 576px) {
 		max-width: 540px;
 	}
