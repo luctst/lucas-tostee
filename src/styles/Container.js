@@ -6,6 +6,11 @@ const GlobalContainer = styled.div`
 `;
 
 export const Container = styled(GlobalContainer)`
+	details {
+		:hover {
+			cursor: pointer;
+		}
+	}
 	@media (min-width: 576px) {
 		max-width: 540px;
 	}

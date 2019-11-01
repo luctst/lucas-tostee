@@ -6,18 +6,19 @@ const SCMainAbout = styled.header`
 	margin: 2em 0;
 	h1 {
 		font-family: 'Jacques Francois', sans-serif;
-		font-size: 64px;
+		font-size: 75px;
 		margin-top: 0;
 		margin-bottom: 0;
 		color: ${styleUtils.mainColor};
+		margin-bottom: .3em;
 	}
 
 	h2 {
 		font-family: "Open Sans", sans-serif;
-		font-size: 19px;
+		font-size: 18px;
 		color: ${styleUtils.mainColor};
 		opacity: ${styleUtils.mainOpacity};
-		padding-right: 4em;
+		margin: 0 0 .7em 0;
 
 		a {
 			color: ${styleUtils.mainColor};
@@ -45,7 +46,7 @@ const SCMainAbout = styled.header`
 
 	@media (min-width: 1000px) {
 		h2 {
-			padding-right: 15em;
+			width: 55vw;
 		}
 	}
 `;
