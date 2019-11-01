@@ -3,7 +3,6 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "gh-pages": "^2.1.1",
     "prettier": "^1.18.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
@@ -12,10 +11,7 @@
     "redux": "^4.0.1",
     "styled-components": "^4.3.1"
   },
-  "homepage": "https://luctst.github.io/portfolio/",
   "scripts": {
-		"predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
