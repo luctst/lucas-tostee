@@ -38,7 +38,6 @@ const SCMainAbout = styled.header`
 			font-size: 52px;
 		}
 		h2 {
-			width: 100vw;
 			font-size: 16.5px;
 			line-height: 30px;
 			padding: 0;
