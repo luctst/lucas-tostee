@@ -1,3 +1,10 @@
+dist: trusty
+
+sudo: required
+
+git:
+  depth: 1
+
 language: node_js
 
 node_js:
