@@ -2,7 +2,6 @@
   "name": "test",
   "version": "0.1.0",
 	"private": true,
-	"homepage": "https://luctst.github.io/portfolio/",
   "dependencies": {
     "prettier": "^1.18.2",
     "react": "^16.8.6",
