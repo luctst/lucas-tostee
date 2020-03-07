@@ -26,4 +26,4 @@ install:
 
 script:
 - CI=false npm run build
-- npm run test
+- npm run style
