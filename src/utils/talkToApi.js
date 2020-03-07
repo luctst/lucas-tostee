@@ -7,32 +7,34 @@
  * @param { Object } [data.headers = {}] - An object that will be used as request header cannot contains`Accept, content-type, x-waveup-mobile, x-waveup-version`.
  * @param { Object } [data.body = {}] - Object with data to pass in the body request should be a javascript object and not a JSON object.
  */
-export default function (route, method, data = {}) {
+export default function(route, method, data = {}) {
 	if (!route) {
-		return console.error(new Error('You should enter a route to fetch').message)
+		return console.error(new Error("You should enter a route to fetch").message);
 	} else {
-		typeof route !== 'string' && console.error(new Error('The route parameter should be a string.').message)
+		typeof route !== "string" &&
+			console.error(new Error("The route parameter should be a string.").message);
 	}
 
 	if (method) {
-		typeof method !== 'string' && console.error(new Error('Method should be a string').message)
+		typeof method !== "string" &&
+			console.error(new Error("Method should be a string").message);
 
-		if (!['GET', 'POST', 'PUT', 'DELETE'].includes(method.toUpperCase())) {
-			return console.error(new Error(`The ${method} is not available for now.`).message)
+		if (!["GET", "POST", "PUT", "DELETE"].includes(method.toUpperCase())) {
+			return console.error(new Error(`The ${method} is not available for now.`).message);
 		}
 	} else {
-		method = 'GET'
+		method = "GET";
 	}
 
 	return fetch(`https://api.github.com${route}`, {
 		method: method,
 		headers: {
 			...data.headers,
-			Accept: 'application/json',
-			'Content-Type': 'application/json;charset=utf-8',
+			Accept: "application/json",
+			"Content-Type": "application/json;charset=utf-8"
 		},
 		body: data.body && JSON.stringify(data.body)
 	})
-	.then(res => res.json())
-	.then(dataParsed => dataParsed)
+		.then(res => res.json())
+		.then(dataParsed => dataParsed);
 }

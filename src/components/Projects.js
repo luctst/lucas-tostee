@@ -2,10 +2,10 @@ import React from "react";
 import SCprojects from "../styles/Projects.style";
 import talkToApi from "../utils/talkToApi";
 import Chips from "./Chips";
-import {Context} from "./App"
+import { Context } from "./App";
 
 const Projects = () => {
-	const themeLight = React.useContext(Context)
+	const themeLight = React.useContext(Context);
 	const [state, setState] = React.useState({
 		dataFetched: false,
 		data: []
@@ -15,10 +15,11 @@ const Projects = () => {
 		talkToApi("/user/repos?sort=pushed&per_page=10", "get", {
 			headers: {
 				Authorization: `token ${process.env.REACT_APP_APIKEY}`,
- 				"User-Agent": "luctst"
+				"User-Agent": "luctst"
 			}
-		})
-		.then(response => setState({dataFetched: !state.dataFetched, data: [...response]}));
+		}).then(response =>
+			setState({ dataFetched: !state.dataFetched, data: [...response] })
+		);
 	}, []);
 
 	return (

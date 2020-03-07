@@ -1,9 +1,9 @@
 import React from "react";
 import SCcontact from "../styles/Contact.style";
-import {Context} from "./App";
+import { Context } from "./App";
 
 const Contact = () => {
-	const themeLight = React.useContext(Context)
+	const themeLight = React.useContext(Context);
 
 	return (
 		<SCcontact themeLight={themeLight}>

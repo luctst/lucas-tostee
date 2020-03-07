@@ -11,19 +11,28 @@ const SCMainAbout = styled.header`
 			font-size: 75px;
 			margin-top: 0;
 			margin-bottom: 0;
-			color: ${props => props.themeLight ? props.theme.light.colorContent : props.theme.dark.colorContent};
+			color: ${props =>
+				props.themeLight
+					? props.theme.light.colorContent
+					: props.theme.dark.colorContent};
 			margin-bottom: 0.3em;
 		}
 
 		h2 {
-			color: ${props => props.themeLight ? props.theme.light.colorContent : props.theme.dark.colorContent};
+			color: ${props =>
+				props.themeLight
+					? props.theme.light.colorContent
+					: props.theme.dark.colorContent};
 			font-family: "Open Sans", sans-serif;
 			font-size: 18px;
 			opacity: ${props => props.theme.mainOpacity};
 			margin: 0 0 0.7em 0;
 
 			a {
-				color: ${props => props.themeLight ? props.theme.light.colorContent : props.theme.dark.colorContent};
+				color: ${props =>
+					props.themeLight
+						? props.theme.light.colorContent
+						: props.theme.dark.colorContent};
 			}
 
 			a:first-child:hover {
