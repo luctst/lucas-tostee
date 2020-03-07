@@ -3,7 +3,8 @@ import styled from "styled-components";
 const SCprojects = styled.details`
 	margin-bottom: 0.5em;
 	summary {
-		color: ${props => props.themeLight ? props.theme.light.colorContent : props.theme.dark.colorContent};
+		color: ${props =>
+			props.themeLight ? props.theme.light.colorContent : props.theme.dark.colorContent};
 		font-family: "Jacques Francois", sans-serif;
 		font-size: 17.5px;
 	}
@@ -19,7 +20,10 @@ const SCprojects = styled.details`
 			margin: 15px 0;
 
 			a {
-				color: ${props => props.themeLight ? props.theme.light.colorContent : props.theme.dark.colorContent};
+				color: ${props =>
+					props.themeLight
+						? props.theme.light.colorContent
+						: props.theme.dark.colorContent};
 				opacity: ${props => props.theme.mainOpacity};
 
 				:hover {
@@ -31,7 +35,8 @@ const SCprojects = styled.details`
 
 	p {
 		font-family: "Jacques Francois", sans-serif;
-		color: ${props => props.themeLight ? props.theme.light.colorContent : props.theme.dark.colorContent};
+		color: ${props =>
+			props.themeLight ? props.theme.light.colorContent : props.theme.dark.colorContent};
 		font-size: 11.6px;
 	}
 `;

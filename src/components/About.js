@@ -4,10 +4,10 @@ import SCMainAbout from "../styles/About.style";
 import Loader from "./Loader";
 import Sun from "../img/sun.png";
 import Moon from "../img/moon.png";
-import {Context} from "./App";
+import { Context } from "./App";
 
-const About = React.memo((props) => {
-	const themeLight = React.useContext(Context)
+const About = React.memo(props => {
+	const themeLight = React.useContext(Context);
 	const [repoLength, setRepoLenght] = React.useState(0);
 
 	React.useEffect(() => {
@@ -16,8 +16,7 @@ const About = React.memo((props) => {
 				Authorization: `token ${process.env.REACT_APP_APIKEY}`,
 				"User-Agent": "luctst"
 			}
-		})
-		.then(response => setRepoLenght(response.length))
+		}).then(response => setRepoLenght(response.length));
 	}, []);
 
 	return (
@@ -50,7 +49,11 @@ const About = React.memo((props) => {
 				</h2>
 			</div>
 			<div>
-				<img src={themeLight ? Sun : Moon} alt="Theme settings" onClick={props.switchTheme}/>
+				<img
+					src={themeLight ? Sun : Moon}
+					alt="Theme settings"
+					onClick={props.switchTheme}
+				/>
 			</div>
 		</SCMainAbout>
 	);
