@@ -2,19 +2,19 @@ import styled from "styled-components";
 
 const SCcontact = styled.details`
 	summary {
-		color: #192735;
+		color: ${props => props.themeLight ? props.theme.light.colorContent : props.theme.dark.colorContent};
 		font-family: "Jacques Francois", sans-serif;
 		font-size: 17.5px;
 	}
 
 	p {
+		color: ${props => props.themeLight ? props.theme.light.colorContent : props.theme.dark.colorContent};
 		font-family: "Open Sans", sans-serif;
-		color: ${props => props.theme.mainColor};
 		opacity: ${props => props.theme.mainOpacity};
 		font-size: 13.5px;
 
 		a {
-			color: #192735;
+			color: ${props => props.themeLight ? props.theme.light.colorContent : props.theme.dark.colorContent};
 		}
 
 		a:first-child:hover {
