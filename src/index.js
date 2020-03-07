@@ -1,21 +1,10 @@
 import React from "react";
-import { ThemeProvider } from "styled-components";
-import theme from "./utils/theme";
 import { render } from "react-dom";
-import { Container } from "./utils/Container";
+import App from "./components/App";
 import * as serviceWorker from "./serviceWorker";
-import About from "./components/About";
-import Contact from "./components/Contact";
-import Projects from "./components/Projects";
 
 render(
-	<ThemeProvider theme={theme}>
-		<Container as="main">
-			<About />
-			<Projects />
-			<Contact />
-		</Container>
-	</ThemeProvider>,
+	<App />,
 	document.getElementById("root")
 );
 
