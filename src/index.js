@@ -1,25 +1,22 @@
-import React from 'react';
-import {render} from 'react-dom';
-import {Provider} from 'react-redux';
-import store from "./state/store/appStore";
-import { Container } from "./styles/Container";
-import Loader from './components/Loader/Loader';
-import * as serviceWorker from './serviceWorker';
-import About from "./components/About/About";
-import Contact from "./components/Contact/Contact";
-const Projects = React.lazy(() => import("./container/Projects/Projects"));
+import React from "react";
+import { ThemeProvider } from "styled-components";
+import theme from "./utils/theme";
+import { render } from "react-dom";
+import { Container } from "./utils/Container";
+import * as serviceWorker from "./serviceWorker";
+import About from "./components/About";
+import Contact from "./components/Contact";
+import Projects from "./components/Projects";
 
 render(
-	<Provider store={store}>
+	<ThemeProvider theme={theme}>
 		<Container as="main">
-			<React.Suspense fallback={<div><Loader /></div>}>
-				<About/>
-				<Projects/>
-				<Contact/>
-			</React.Suspense>
+			<About />
+			<Projects />
+			<Contact />
 		</Container>
-	</Provider>
-	,document.getElementById('root')
+	</ThemeProvider>,
+	document.getElementById("root")
 );
 
 // If you want your app to work offline and load faster, you can change
