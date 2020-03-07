@@ -1,9 +1,12 @@
 import React from "react";
 import SCcontact from "../styles/Contact.style";
+import {Context} from "./App";
 
 const Contact = () => {
+	const themeLight = React.useContext(Context)
+
 	return (
-		<SCcontact>
+		<SCcontact themeLight={themeLight}>
 			<summary>Contact</summary>
 			<p>
 				I'm mainly active on <a href="https://www.github.com/luctst">Github</a> and{" "}

@@ -2,8 +2,10 @@ import React from "react";
 import SCprojects from "../styles/Projects.style";
 import talkToApi from "../utils/talkToApi";
 import Chips from "./Chips";
+import {Context} from "./App"
 
 const Projects = () => {
+	const themeLight = React.useContext(Context)
 	const [state, setState] = React.useState({
 		dataFetched: false,
 		data: []
@@ -20,7 +22,7 @@ const Projects = () => {
 	}, []);
 
 	return (
-		<SCprojects>
+		<SCprojects themeLight={themeLight}>
 			<summary>Projects</summary>
 			<ul>
 				{state.dataFetched !== false
