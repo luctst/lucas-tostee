@@ -1,34 +1,48 @@
 import styled from "styled-components";
 
 const SCMainAbout = styled.header`
+	display: flex;
 	height: fit-content;
 	margin: 2em 0;
-	h1 {
-		font-family: "Jacques Francois", sans-serif;
-		font-size: 75px;
-		margin-top: 0;
-		margin-bottom: 0;
-		color: ${props => props.theme.mainColor};
-		margin-bottom: 0.3em;
-	}
 
-	h2 {
-		font-family: "Open Sans", sans-serif;
-		font-size: 18px;
-		color: ${props => props.theme.mainColor};
-		opacity: ${props => props.theme.mainOpacity};
-		margin: 0 0 0.7em 0;
-
-		a {
-			color: ${props => props.theme.mainColor};
+	div {
+		h1 {
+			font-family: "Jacques Francois", sans-serif;
+			font-size: 75px;
+			margin-top: 0;
+			margin-bottom: 0;
+			color: ${props => props.themeLight ? props.theme.light.colorContent : props.theme.dark.colorContent};
+			margin-bottom: 0.3em;
 		}
 
-		a:first-child:hover {
-			color: #00acee;
+		h2 {
+			color: ${props => props.themeLight ? props.theme.light.colorContent : props.theme.dark.colorContent};
+			font-family: "Open Sans", sans-serif;
+			font-size: 18px;
+			opacity: ${props => props.theme.mainOpacity};
+			margin: 0 0 0.7em 0;
+
+			a {
+				color: ${props => props.themeLight ? props.theme.light.colorContent : props.theme.dark.colorContent};
+			}
+
+			a:first-child:hover {
+				color: #00acee;
+			}
+
+			a:last-child:hover {
+				color: #ad5c51;
+			}
 		}
 
-		a:last-child:hover {
-			color: #ad5c51;
+		img {
+			height: auto;
+			object-fit: cover;
+			width: 100%;
+
+			:hover {
+				cursor: pointer;
+			}
 		}
 	}
 
