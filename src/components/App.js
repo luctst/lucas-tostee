@@ -4,7 +4,6 @@ import theme from "../utils/theme";
 import { Container } from "../utils/Container";
 import About from "../components/About";
 import Projects from "../components/Projects";
-import Contact from "../components/Contact";
 
 export const Context = React.createContext();
 
@@ -26,7 +25,6 @@ function App() {
 				<Context.Provider value={themeLight}>
 					<About switchTheme={switchTheme} />
 					<Projects />
-					<Contact />
 				</Context.Provider>
 			</Container>
 		</ThemeProvider>
