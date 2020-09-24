@@ -44,6 +44,26 @@ const SCMainAbout = styled.header`
 			}
 		}
 
+		small {
+			color: ${props =>
+				props.themeLight ? props.theme.light.colorContent : props.theme.dark.colorContent};
+			font-family: "Open Sans", sans-serif;
+			opacity: ${props => props.theme.mainOpacity};
+			font-size: 13.5px;
+
+			a {
+				color: ${props => props.themeLight ? props.theme.light.colorContent: props.theme.dark.colorContent};
+			}
+
+			a:first-child:hover {
+				color: #ad5c51;
+			}
+
+			a:last-child:hover {
+				color: #000;
+			}
+		}
+
 		img {
 			height: auto;
 			object-fit: cover;

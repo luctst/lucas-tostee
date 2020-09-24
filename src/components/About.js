@@ -47,6 +47,8 @@ const About = React.memo(props => {
 						👇
 					</span>
 				</h2>
+				<small>I'm mainly active on <a href="https://www.github.com/luctst" _target="blank">Github</a> and{" "}
+				publish some stuff on <a href="https://dev.to/luctst" _target="blank">Dev.to</a> do not hesitate to follow me :)</small>
 			</div>
 			<div>
 				<img
