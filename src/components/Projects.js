@@ -20,7 +20,7 @@ const Projects = () => {
 		}).then(response =>
 			setState({ dataFetched: !state.dataFetched, data: [...response] })
 		);
-	}, []) // eslint-disable-line react-hooks/exhaustive-deps
+	}, []); // eslint-disable-line react-hooks/exhaustive-deps
 
 	return (
 		<SCprojects themeLight={themeLight}>
